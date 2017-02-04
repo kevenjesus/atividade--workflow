@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var cleanHtml = require('gulp-htmlmin');
 var cleanCss = require('gulp-clean-css');
+var gulpSass = require('gulp-sass');
 
 gulp.task('cleanHtml', function(){
    return gulp.src('./source/*.html')
@@ -9,6 +10,7 @@ gulp.task('cleanHtml', function(){
 });
 gulp.task('cleanScss', function(){
     return gulp.src('./source/scss/*.scss')
+            .pipe(gulpSass().on('error', gulpSass.logError))
             .pipe(cleanCss({compatibility: 'ie8'}))
             .pipe(gulp.dest('./dist/css'));
 });
