@@ -15,5 +15,6 @@ gulp.task('cleanScss', function(){
             .pipe(gulp.dest('./dist/css'));
 });
 gulp.task('listen', function(){
-   gulp.watch('./source/**/*.*',['cleanScss', 'cleanHtml']); 
+   gulp.watch('./source/scss/*.scss',['cleanScss']); 
+   gulp.watch('./source/*.html',['cleanHtml']); 
 });
