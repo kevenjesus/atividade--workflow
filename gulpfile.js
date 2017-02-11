@@ -14,7 +14,14 @@ gulp.task('cleanScss', function(){
             .pipe(cleanCss({compatibility: 'ie8'}))
             .pipe(gulp.dest('./dist/css'));
 });
+
+gulp.task('move-js', function(){
+   return gulp.src('./source/js/*.js')
+          .pipe(gulp.dest('./dist/js'));
+});
+
 gulp.task('listen', function(){
-   gulp.watch('./source/scss/*.scss',['cleanScss']); 
-   gulp.watch('./source/*.html',['cleanHtml']); 
+   gulp.watch('./source/scss/*.*',['cleanScss']); 
+   gulp.watch('./source/js/*.js', ['move-js']);
+   gulp.watch('./source/*.html', ['cleanHtml']);
 });
